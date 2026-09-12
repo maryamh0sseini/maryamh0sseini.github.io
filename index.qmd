@@ -1,0 +1,9 @@
+---
+title: "worldinmarketing"
+---
+
+![](images/profile.jpg){width=250px}
+
+
+Hi, I'm Maryam! I'm a Master's student in Data Science at UBC. Before starting the program, I studied marketing and worked as a marketing manager for 5 years. I'm passionate about using data to solve real-world problems, and I'm excited to build on my background in marketing analytics here at MDS.
+

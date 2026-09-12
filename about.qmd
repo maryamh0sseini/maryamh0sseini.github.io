@@ -1,0 +1,5 @@
+---
+title: "About Me"
+---
+
+I grew up in Iran and before joining MDS, I worked at non profitable and tech industries. I decided to pursue data science because of my interest in marketing and data analytics. When I'm not coding or studying, you can find me cooking and baking and exploring new places.
