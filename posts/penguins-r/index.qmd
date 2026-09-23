@@ -1,0 +1,64 @@
+---
+title: "Penguin Body Size by Species"
+author: "Maryam"
+date: "2026-09-22"
+---
+
+## Introduction
+
+In this analysis we explore whether body mass and flipper length differ
+across the three penguin species: Adelie, Chinstrap, and Gentoo.
+
+Data: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/),
+Palmer Station Antarctica LTER. Available under a CC0 license.
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(palmerpenguins)
+library(dplyr)
+```
+
+## Preparing the data
+
+We first load the dataset and remove rows with missing values.
+
+```{r}
+#| label: clean-data
+
+penguins_clean <- penguins |>
+  filter(!is.na(body_mass_g), !is.na(flipper_length_mm), !is.na(species))
+
+head(penguins_clean)
+```
+
+## Summary statistics by species
+
+We compute the mean and standard deviation of body mass and flipper length
+for each species.
+
+```{r}
+#| label: summary-stats
+
+penguins_summary <- penguins_clean |>
+  group_by(species) |>
+  summarize(
+    mean_body_mass = mean(body_mass_g),
+    sd_body_mass = sd(body_mass_g),
+    mean_flipper_length = mean(flipper_length_mm),
+    n = n()
+  )
+
+penguins_summary
+```
+
+From this table, we can see that Gentoo penguins are noticeably heavier
+than the other two species.
+
+## Conclusion
+
+Based on the table and figure above, Gentoo penguins are clearly heavier
+than the other two species, while Adelie and Chinstrap have more similar
+body mass distributions.
