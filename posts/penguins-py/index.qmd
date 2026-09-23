@@ -1,0 +1,82 @@
+---
+title: "Penguin Bill Shape by Island"
+author: "Maryam"
+date: "2026-09-22"
+---
+
+## Introduction
+
+In this analysis we explore whether bill length and bill depth differ
+across the three islands where the penguins were observed: Torgersen,
+Biscoe, and Dream.
+
+Data: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/),
+Palmer Station Antarctica LTER. Available under a CC0 license.
+
+```{python}
+#| label: setup
+#| message: false
+#| warning: false
+
+import pandas as pd
+from palmerpenguins import load_penguins
+```
+
+## Preparing the data
+
+We load the dataset and remove rows with missing values in the columns
+we need.
+
+```{python}
+#| label: clean-data
+
+penguins = load_penguins()
+
+penguins_clean = penguins.dropna(subset=["bill_length_mm", "bill_depth_mm", "island"])
+
+penguins_clean.head()
+```
+
+## Summary statistics by island
+
+We compute the mean and standard deviation of bill length and bill depth
+for each island.
+
+```{python}
+#| label: summary-stats
+
+island_summary = penguins_clean.groupby("island").agg(
+    mean_bill_length=("bill_length_mm", "mean"),
+    sd_bill_length=("bill_length_mm", "std"),
+    mean_bill_depth=("bill_depth_mm", "mean"),
+    sd_bill_depth=("bill_depth_mm", "std"),
+    n=("bill_length_mm", "count")
+)
+
+island_summary
+```
+
+From this table, we can see that bill length and depth vary noticeably
+across islands, which is largely explained by the fact that different
+penguin species dominate different islands.
+
+## Species counts by island
+
+To understand this further, we look at how many penguins of each species
+were observed on each island.
+
+```{python}
+#| label: species-by-island
+
+species_island_table = penguins_clean.groupby(["island", "species"]).size().unstack()
+
+species_island_table
+```
+
+## Conclusion
+
+Bill length and depth differ across islands mainly because each island is
+dominated by a different species. Biscoe is home mostly to Gentoo and
+Adelie penguins, while Dream has a mix of Adelie and Chinstrap, and
+Torgersen has only Adelie penguins. This explains the differences we see
+in the summary statistics above.
