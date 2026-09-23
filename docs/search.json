@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "posts/penguins-r/index.html",
+    "href": "posts/penguins-r/index.html",
+    "title": "Penguin Body Size by Species",
+    "section": "",
+    "text": "In this analysis we explore whether body mass and flipper length differ across the three penguin species: Adelie, Chinstrap, and Gentoo.\nData: Palmer Penguins, Palmer Station Antarctica LTER. Available under a CC0 license.\n\nlibrary(palmerpenguins)\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#introduction",
+    "href": "posts/penguins-r/index.html#introduction",
+    "title": "Penguin Body Size by Species",
+    "section": "",
+    "text": "In this analysis we explore whether body mass and flipper length differ across the three penguin species: Adelie, Chinstrap, and Gentoo.\nData: Palmer Penguins, Palmer Station Antarctica LTER. Available under a CC0 license.\n\nlibrary(palmerpenguins)\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#preparing-the-data",
+    "href": "posts/penguins-r/index.html#preparing-the-data",
+    "title": "Penguin Body Size by Species",
+    "section": "Preparing the data",
+    "text": "Preparing the data\nWe first load the dataset and remove rows with missing values.\n\npenguins_clean &lt;- penguins |&gt;\n  filter(!is.na(body_mass_g), !is.na(flipper_length_mm), !is.na(species))\n\nhead(penguins_clean)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           36.7          19.3               193        3450\n5 Adelie  Torgersen           39.3          20.6               190        3650\n6 Adelie  Torgersen           38.9          17.8               181        3625\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#summary-statistics-by-species",
+    "href": "posts/penguins-r/index.html#summary-statistics-by-species",
+    "title": "Penguin Body Size by Species",
+    "section": "Summary statistics by species",
+    "text": "Summary statistics by species\nWe compute the mean and standard deviation of body mass and flipper length for each species.\n\npenguins_summary &lt;- penguins_clean |&gt;\n  group_by(species) |&gt;\n  summarize(\n    mean_body_mass = mean(body_mass_g),\n    sd_body_mass = sd(body_mass_g),\n    mean_flipper_length = mean(flipper_length_mm),\n    n = n()\n  )\n\npenguins_summary\n\n# A tibble: 3 × 5\n  species   mean_body_mass sd_body_mass mean_flipper_length     n\n  &lt;fct&gt;              &lt;dbl&gt;        &lt;dbl&gt;               &lt;dbl&gt; &lt;int&gt;\n1 Adelie             3701.         459.                190.   151\n2 Chinstrap          3733.         384.                196.    68\n3 Gentoo             5076.         504.                217.   123\n\n\nFrom this table, we can see that Gentoo penguins are noticeably heavier than the other two species."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#conclusion",
+    "href": "posts/penguins-r/index.html#conclusion",
+    "title": "Penguin Body Size by Species",
+    "section": "Conclusion",
+    "text": "Conclusion\nBased on the table and figure above, Gentoo penguins are clearly heavier than the other two species, while Adelie and Chinstrap have more similar body mass distributions."
+  },
+  {
     "objectID": "posts/first-weeks/index.html",
     "href": "posts/first-weeks/index.html",
     "title": "My first weeks in MDS",
@@ -11,7 +46,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nMaryam\n\n\n\n\n\nNo matching items"
+    "text": "Penguin Bill Shape by Island\n\n\n\n\n\n\n\n\nSep 22, 2026\n\n\nMaryam\n\n\n\n\n\n\n\n\n\n\n\n\nPenguin Body Size by Species\n\n\n\n\n\n\n\n\nSep 22, 2026\n\n\nMaryam\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nMaryam\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -26,5 +61,47 @@
     "title": "worldinmarketing",
     "section": "",
     "text": "Hi, I’m Maryam! I’m a Master’s student in Data Science at UBC. Before starting the program, I studied marketing and worked as a marketing manager for 5 years. I’m passionate about using data to solve real-world problems, and I’m excited to build on my background in marketing analytics here at MDS."
+  },
+  {
+    "objectID": "posts/penguins-py/index.html",
+    "href": "posts/penguins-py/index.html",
+    "title": "Penguin Bill Shape by Island",
+    "section": "",
+    "text": "In this analysis we explore whether bill length and bill depth differ across the three islands where the penguins were observed: Torgersen, Biscoe, and Dream.\nData: Palmer Penguins, Palmer Station Antarctica LTER. Available under a CC0 license.\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins"
+  },
+  {
+    "objectID": "posts/penguins-py/index.html#introduction",
+    "href": "posts/penguins-py/index.html#introduction",
+    "title": "Penguin Bill Shape by Island",
+    "section": "",
+    "text": "In this analysis we explore whether bill length and bill depth differ across the three islands where the penguins were observed: Torgersen, Biscoe, and Dream.\nData: Palmer Penguins, Palmer Station Antarctica LTER. Available under a CC0 license.\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins"
+  },
+  {
+    "objectID": "posts/penguins-py/index.html#preparing-the-data",
+    "href": "posts/penguins-py/index.html#preparing-the-data",
+    "title": "Penguin Bill Shape by Island",
+    "section": "Preparing the data",
+    "text": "Preparing the data\nWe load the dataset and remove rows with missing values in the columns we need.\n\npenguins = load_penguins()\n\npenguins_clean = penguins.dropna(subset=[\"bill_length_mm\", \"bill_depth_mm\", \"island\"])\n\npenguins_clean.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007\n\n\n5\nAdelie\nTorgersen\n39.3\n20.6\n190.0\n3650.0\nmale\n2007"
+  },
+  {
+    "objectID": "posts/penguins-py/index.html#summary-statistics-by-island",
+    "href": "posts/penguins-py/index.html#summary-statistics-by-island",
+    "title": "Penguin Bill Shape by Island",
+    "section": "Summary statistics by island",
+    "text": "Summary statistics by island\nWe compute the mean and standard deviation of bill length and bill depth for each island.\n\nisland_summary = penguins_clean.groupby(\"island\").agg(\n    mean_bill_length=(\"bill_length_mm\", \"mean\"),\n    sd_bill_length=(\"bill_length_mm\", \"std\"),\n    mean_bill_depth=(\"bill_depth_mm\", \"mean\"),\n    sd_bill_depth=(\"bill_depth_mm\", \"std\"),\n    n=(\"bill_length_mm\", \"count\")\n)\n\nisland_summary\n\n\n\n\n\n\n\n\nmean_bill_length\nsd_bill_length\nmean_bill_depth\nsd_bill_depth\nn\n\n\nisland\n\n\n\n\n\n\n\n\n\nBiscoe\n45.257485\n4.772731\n15.874850\n1.820721\n167\n\n\nDream\n44.167742\n5.953527\n18.344355\n1.133116\n124\n\n\nTorgersen\n38.950980\n3.025318\n18.429412\n1.339447\n51\n\n\n\n\n\n\n\nFrom this table, we can see that bill length and depth vary noticeably across islands, which is largely explained by the fact that different penguin species dominate different islands."
+  },
+  {
+    "objectID": "posts/penguins-py/index.html#species-counts-by-island",
+    "href": "posts/penguins-py/index.html#species-counts-by-island",
+    "title": "Penguin Bill Shape by Island",
+    "section": "Species counts by island",
+    "text": "Species counts by island\nTo understand this further, we look at how many penguins of each species were observed on each island.\n\nspecies_island_table = penguins_clean.groupby([\"island\", \"species\"]).size().unstack()\n\nspecies_island_table\n\n\n\n\n\n\n\nspecies\nAdelie\nChinstrap\nGentoo\n\n\nisland\n\n\n\n\n\n\n\nBiscoe\n44.0\nNaN\n123.0\n\n\nDream\n56.0\n68.0\nNaN\n\n\nTorgersen\n51.0\nNaN\nNaN"
+  },
+  {
+    "objectID": "posts/penguins-py/index.html#conclusion",
+    "href": "posts/penguins-py/index.html#conclusion",
+    "title": "Penguin Bill Shape by Island",
+    "section": "Conclusion",
+    "text": "Conclusion\nBill length and depth differ across islands mainly because each island is dominated by a different species. Biscoe is home mostly to Gentoo and Adelie penguins, while Dream has a mix of Adelie and Chinstrap, and Torgersen has only Adelie penguins. This explains the differences we see in the summary statistics above."
   }
 ]
